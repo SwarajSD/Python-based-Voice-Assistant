@@ -3,6 +3,7 @@ import speech_recognition as sr
 import webbrowser
 import datetime
 import pyjokes
+import os
 
 def sptext():
     recognizer = sr.Recognizer()
@@ -48,8 +49,15 @@ if __name__ == "__main__":
     elif 'joke' in data1:
         joke_1 = pyjokes.get_joke(language='en', category='neutral')
         speechhtx(joke_1)
+    elif 'play song' in data1:
+        add = "D:\_Bak"
+        listsong = os.listdir(add)
+        print(listsong)
+        os.startfile(os.path.join(add, listsong[1]))
+
     elif "exit" in data1:
         speechhtx("Goodbye")
         exit()
+    
     else:
         print("Not understood")
